@@ -1,0 +1,1584 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Required meta Tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no" />
+	<!-- Company Title -->
+	<title>Rahman - Cars || Tailwind CSS</title>
+	<!-- google-font -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+	<!-- Company Icon -->
+	<link rel="icon" href="images/demo/tailwindcss-mark.svg" />
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="css/all.min.css" />
+	<!-- swiper js  -->
+	<link rel="stylesheet" href="css/swiper-bundle.min.css" />
+	<!-- Tailwind CSS -->
+	<link rel="stylesheet" href="css/app.css" />
+	<script src="css/tailwind.min.css" ></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+		body {
+			font-family: 'Noto Sans', sans-serif !important;
+		}
+		
+		.swiper-button-prev:after, .swiper-button-next:after {
+			content: '';
+		}
+	</style>
+</head>
+
+<body style="font-family:  'Noto Sans', sans-serif;">
+	<header >
+		<nav id="" x-data="{ open: false}" class="fixed w-full  z-50">
+	<div class="bg-gray-900 mx-auto">
+		<div class="flex items-center justify-between h-16 relative px-2 sm:px-3">
+			<div class="flex items-center justify-center sm:items-stretch sm:justify-start">
+				<div class="flex-shrink-0 flex">
+					<img class="block h-8 w-auto" src="images/demo/logo-light.svg" alt="logo" />
+				</div>
+				<!-- home navbar top -->
+				<div class="hidden lg:block sm:ml-6">
+					<div class="flex  items-center space-x-4">
+						<!-- Demos -->
+						<div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+							<button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+								<span class="sr-only">Open user menu</span>
+								Demos
+								<svg class="h-4 w-4 mt-auto ml-1" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+							<div class="max-h-0 overflow-hidden absolute inset-0 bottom-auto mt-11 w-56 rounded-md shadow-lg px-5 bg-gray-800 bg-opacity-90 transition-all duration-500" x-ref="dropdown1" :style="dropdown = dropdown ?  'max-height: '+ $refs.dropdown1.scrollHeight + 'px' :'' ">
+								<a href="#" class="block py-2 text-gray-300 text-semibold hover:text-white duration-300 border-b border-gray-700" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Real Estate Demo</a>
+								<a href="#" class="block py-2 text-gray-300 text-semibold hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car Finder Demo</a>
+								<a href="#" class="block py-2 text-gray-300 text-semibold hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Job Board Demo</a>
+								<a href="#" class="block py-2 text-gray-300 text-semibold hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">City Guide Demo</a>
+								<a href="#" class="block py-2 text-gray-300 hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Main Page</a>
+								<a href="#" class="block py-2 text-gray-300 hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Components</a>
+								<a href="#" class="block py-2 text-gray-300 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Documentation</a>
+							</div>
+						</div>
+						<!-- Home -->
+						<a href="index.php" class="text-white px-3 py-2 font-medium" x-state:on="Current" x-state:off="Default" aria-current="page">Home</a>
+						<!-- Catalog -->
+						<div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+							<button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+								Catalot
+								<svg class="h-4 w-4 mt-auto ml-1" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+							<div class="max-h-0 overflow-hidden absolute inset-0 bottom-auto mt-11 w-56 rounded-md shadow-lg px-5 bg-gray-800 bg-opacity-90 transition-all duration-500" x-ref="dropdown1" :style="dropdown = dropdown ?  'max-height: '+ $refs.dropdown1.scrollHeight + 'px' :'' ">
+								<a href="Catalog/list-view/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">List view</a>
+								<a href="Catalog/grid-view/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Grid view</a>
+								<a href="Catalog/car-single-page/index.php" class="block py-2 text-gray-300 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car single</a>
+							</div>
+						</div>
+						<!-- Account -->
+						<div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+							<button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+								Account
+								<svg class="h-4 w-4 mt-auto ml-1" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+							<div class="max-h-0 overflow-hidden absolute inset-0 bottom-auto mt-11 w-56 rounded-md shadow-lg px-5 bg-gray-800 bg-opacity-90 transition-all duration-500" x-ref="dropdown1" :style="dropdown = dropdown ?  'max-height: '+ $refs.dropdown1.scrollHeight + 'px' :'' ">
+								<a href="Account/personal-info/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Personal Info</a>
+								<a href="Account/password&security/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Password & Security</a>
+								<a href="Account/my-cars/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">My Cars</a>
+								<a href="Account/wishlist/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Wishlist</a>
+								<a href="Account/reviews/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Reviews</a>
+								<a href="Account/notifications/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Notifications</a>
+							</div>
+						</div>
+						<!-- Vendor -->
+						<div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+							<button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown">
+								Vendor
+								<svg class="h-4 w-4 mt-auto ml-1" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+							<div class="max-h-0 overflow-hidden absolute inset-0 bottom-auto mt-11 w-56 rounded-md shadow-lg px-5 bg-gray-800 bg-opacity-90 transition-all duration-500" x-ref="dropdown1" :style="dropdown = dropdown ?  'max-height: '+ $refs.dropdown1.scrollHeight + 'px' :'' ">
+								<a href="Vendor/sell-car/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Sell car</a>
+								<a href="Vendor/ad-promotion/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Ad Promotion Page</a>
+								<a href="Vendor/vendor-page/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Vendor page</a>
+							</div>
+						</div>
+						<!-- Pages -->
+						<div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" class="relative z-10">
+							<button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =true? dropdown=!dropdown: dropdown=true" @click.away="dropdown = false">
+								Pages
+								<svg class="h-4 w-4 mt-auto ml-1" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+							<div class="max-h-0 overflow-hidden absolute inset-0 bottom-auto mt-11 w-56 rounded-md shadow-lg px-5 bg-gray-800 bg-opacity-90 transition-all duration-500" x-ref="dropdown1" :style="dropdown = dropdown ?  'max-height: '+ $refs.dropdown1.scrollHeight + 'px' :'' ">
+								<a href="Pages/about/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">About</a>
+								<a href="Pages/singel-post/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Blog Grid</a>
+								<a href="Pages/contacts/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Contact us</a>
+								<a href="Pages/help-center/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Help</a>
+								<a href="Pages/not-found-404/index.php" class="block py-2 text-gray-400 font-semibold hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">404 no page</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Mobile manue -->
+			<div x-data="{ mobile: false }" x-init="init()" @click.away="mobile = false"  @keydown.escape.stop="mobile = false; focusButton()" class="ml-auto mr-5">
+				<!-- Mobile menu dropdown button-->
+				<button type="button" class="block lg:hidden" x-ref="button" @click="mobile = !mobile">
+					<svg x-state:on="Menu open" x-state:off="Menu closed" class="text-white transition-all duration-300 hover:text-red-500 h-6 w-6 block" :class="{ 'hidden': mobile, 'block': !(mobile) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+					<svg x-state:on="Menu open" x-state:off="Menu closed" class="h-6 w-6 hidden" :class="{'text-red-500 block': mobile, 'hidden': !(mobile) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+				<div class=" max-h-0 absolute inset-0 top-14 bg-gray-900  transition-all duration-500 " x-show="mobile" x-ref="mobile1" :style="mobile == mobile ?  'max-height: '+ $refs.mobile1.scrollHeight + 'px' :'' ">
+					<!-- Section-of- mobile-menu -->
+
+<div class="lg:hidden w-full bg-gray-900 pb-6 px-2 sm:px-3" x-data="{acordion : null }">
+    <ul class="shadow-box space-y-2">
+        <!-- Demo-1 -->
+        <li class="border border-gray-800 rounded-lg">
+            <button @click="acordion !== 1 ? acordion = 1 : acordion = null" class="w-full py-2 px-4">
+                <div class="flex items-center justify-between text-gray-400 transition-all duration-700">
+                    <div class="flex gap-1 hover:text-white" :class="acordion == 1 ? 'text-white' : '' ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        <h3 class="text-lg">Demos</h3>
+                    </div>
+                    <svg x-bind:class="acordion == 1 ? 'transform rotate-180 text-white' : '' " xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </button>
+            <div class="text-gray-400 max-h-0 overflow-hidden transition-all duration-700" x-ref="container1" x-bind:style="acordion == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''" x-transition:enter="transform transition ease-in-out duration-300 sm:duration-700" x-transition:enter-start="transform -translate-y-full opacity-0" x-transition:enter-end="transform opacity-100" x-transition:leave="transform transition ease-in-out duration-100 sm:duration-700 " x-transition:leave-start="transform opacity-100" x-transition:leave-end="transform  -translate-y-full opacity-0 duration-500">
+                <div class="capitalize  p-4">
+                    <div class="flex flex-col border-l border-gray-700 pl-4">
+                        <a href="#" class="block py-2 text-gray-300 text-emibold hover:text-white duration-300 border-b border-gray-700" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Real Estate Demo</a>
+                        <a href="#" class="block py-2 text-gray-300 text-emibold hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car Finder Demo</a>
+                        <a href="#" class="block py-2 text-gray-300 text-emibold hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Job Board Demo</a>
+                        <a href="#" class="block py-2 text-gray-300 text-semibold hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">City Guide Demo</a>
+                        <a href="#" class="block py-2 text-gray-300 hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Main Page</a>
+                        <a href="#" class="block py-2 text-gray-300 hover:text-white duration-300 border-b border-gray-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Components</a>
+                        <a href="#" class="block py-2 text-gray-300 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Documentation</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Home -->
+        <li class="border border-gray-800 rounded-lg py-2 px-4">
+            <h3 class="text-lg text-white">Home</h3>
+        </li>
+        <!-- Catalog-2 -->
+        <li class="border border-gray-800 rounded-lg">
+            <button @click="acordion !== 2 ? acordion = 2 : acordion = null" class="w-full py-2 px-4">
+                <div class="flex items-center justify-between text-gray-400">
+                    <h3 class="text-lg transition-all duration-300 hover:text-white" x-bind:class="acordion == 2 ? 'text-white' : '' ">Catalog</h3>
+                    <svg x-bind:class="acordion == 2 ? 'transform rotate-180 text-white' : '' " xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </button>
+            <div class="text-gray-400 max-h-0 overflow-hidden transition-all duration-700" x-ref="container2" x-bind:style="acordion == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''" x-transition:enter="transform transition ease-in-out duration-300 sm:duration-700" x-transition:enter-start="transform -translate-y-full opacity-0" x-transition:enter-end="transform opacity-100" x-transition:leave="transform transition ease-in-out duration-100 sm:duration-700 " x-transition:leave-start="transform opacity-100" x-transition:leave-end="transform  -translate-y-full opacity-0 duration-500">
+                <div class="capitalize p-4">
+                    <div class=" border-l border-gray-700 pl-4">
+                        <a href="Catalog/list-view/index.php" class="block py-2 text-gray-400  hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">List view</a>
+                        <a href="Catalog/grid-view/index.php" class="block py-2 text-gray-400  hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Grid view</a>
+                        <a href="Catalog/car-single-page/index.php" class="block py-2 text-gray-300  hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car single</a>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <!-- Account-3 -->
+        <li class="border border-gray-800 rounded-lg">
+            <button @click="acordion !== 3 ? acordion = 3 : acordion = null" class="w-full py-2 px-4">
+                <div class="flex items-center justify-between text-gray-400">
+                    <h3 class="text-lg transition-all duration-300 hover:text-white" x-bind:class="acordion == 3 ? 'text-white' : '' ">Account</h3>
+                    <svg x-bind:class="acordion == 3 ? 'transform rotate-180 text-white' : '' " xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </button>
+            <div class="text-gray-400 max-h-0 overflow-hidden transition-all duration-700" x-ref="container2" x-bind:style="acordion == 3 ? 'max-height: ' + $refs.container2.scrollHeight + '1px' : ''" x-transition:enter="transform transition ease-in-out duration-300 sm:duration-700" x-transition:enter-start="transform -translate-y-full opacity-0" x-transition:enter-end="transform opacity-100" x-transition:leave="transform transition ease-in-out duration-100 sm:duration-700 " x-transition:leave-start="transform opacity-100" x-transition:leave-end="transform  -translate-y-full opacity-0 duration-500">
+                <div class="capitalize p-4">
+                    <div class=" border-l border-gray-700 pl-4">
+                        <a href="Account/personal-info/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Personal Info</a>
+                        <a href="Account/password&security/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Password & Security</a>
+                        <a href="Account/my-cars/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">My Cars</a>
+                        <a href="Account/wishlist/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Wishlist</a>
+                        <a href="Account/reviews/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Reviews</a>
+                        <a href="Account/notifications/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Notifications</a>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <!-- Vendor-4 -->
+        <li class="border border-gray-800 rounded-lg">
+            <button @click="acordion !== 4 ? acordion = 4 : acordion = null" class="w-full py-2 px-4">
+                <div class="flex items-center justify-between text-gray-400">
+                    <h3 class="text-lg transition-all duration-300 hover:text-white" x-bind:class="acordion == 4 ? 'text-white' : '' ">Vendor</h3>
+                    <svg x-bind:class="acordion == 4 ? 'transform rotate-180 text-white' : '' " xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </button>
+            <div class="text-gray-400 max-h-0 overflow-hidden transition-all duration-700" x-ref="container2" x-bind:style="acordion == 4 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''" x-transition:enter="transform transition ease-in-out duration-300 sm:duration-700" x-transition:enter-start="transform -translate-y-full opacity-0" x-transition:enter-end="transform opacity-100" x-transition:leave="transform transition ease-in-out duration-100 sm:duration-700 " x-transition:leave-start="transform opacity-100" x-transition:leave-end="transform  -translate-y-full opacity-0 duration-500">
+                <div class="capitalize p-4">
+                    <div class=" border-l border-gray-700 pl-4">
+                        <a href="Vendor/sell-car/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Sell car</a>
+                        <a href="Vendor/ad-promotion/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Ad Promotion Page</a>
+                        <a href="Vendor/vendor-page/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Vendor page</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Pages-5 -->
+        <li class="border border-gray-800 rounded-lg">
+            <button @click="acordion !== 5 ? acordion = 5 : acordion = null" class="w-full py-2 px-4">
+                <div class="flex items-center justify-between text-gray-400">
+                    <h3 class="text-lg transition-all duration-300 hover:text-white" x-bind:class="acordion == 5 ? 'text-white' : '' ">Pages</h3>
+                    <svg x-bind:class="acordion == 5 ? 'transform rotate-180 text-white' : '' " xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </button>
+            <div class="text-gray-400 max-h-0 overflow-hidden transition-all duration-700" x-ref="container2" x-bind:style="acordion == 5 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''" x-transition:enter="transform transition ease-in-out duration-300 sm:duration-700" x-transition:enter-start="transform -translate-y-full opacity-0" x-transition:enter-end="transform opacity-100" x-transition:leave="transform transition ease-in-out duration-100 sm:duration-700 " x-transition:leave-start="transform opacity-100" x-transition:leave-end="transform  -translate-y-full opacity-0 duration-500">
+                <div class="capitalize p-4">
+                    <div class=" border-l border-gray-700 pl-4">
+                        <a href="Pages/about/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">About</a>
+                        <a href="Pages/singel-post/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Blog Grid</a>
+                        <a href="Pages/contacts/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Contact us</a>
+                        <a href="Pages/help-center/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Help</a>
+                        <a href="Pages/not-found-404/index.php" class="block py-2 text-gray-400 hover:text-white duration-300" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">404 no page</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- modal sign in page -->
+        <li class="border border-gray-800 rounded-lg">
+            <!-- modal -->
+            <div x-data="{ open: false }" @keydown.window.escape="open = false" @click.away="open=false">
+                <div class="relative group flex flex-col-reverse">
+                    <button href="" class="py-2 px-4 flex gap-1 text-gray-400 hover:text-white transition-all" @click="open = true">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span class="font-medium ">Sign in</span>
+                    </button>
+                </div>
+                <div x-show="open" class="fixed z-50 inset-0 overflow-y-auto my-auto top-5 -bottom-5" x-ref="dialog" aria-modal="true" style="display: none;">
+                    <div class="flex min-h-screen sm:block md:px-2 lg:px-4" style="font-size: 0;">
+                        <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" x-description="Modal panel, show/hide based on modal state." class="w-full lg:w-9/12 mx-auto transform transition p-2 md:my-8 sm:align-middle z-1010" style="display: none;">
+                            <div class=" relative bg-gray-900 text-white rounded-lg  shadow-2xl overflow-hidden border border-gray-800">
+                                <!-- close-button -->
+                                <button type="button" class="absolute top-4 right-4 text-gray-400 trnsition-all duration-300 hover:text-red-500" @click="open = false">
+                                    <span class="sr-only">Close</span>
+                                    <svg class="h-6 w-6" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-base divide-x divide-gray-800 ">
+                                    <div class="px-8 py-14 space-y-4">
+                                        <h1 class="text-3xl font-medium">Hey there!<br>Welcome back.</h1>
+                                        <img src="images/demo/signin-dark.svg" alt="" class="p-4 block w-full h-auto text-center">
+                                        <h3 class="text-gray-400">Don't have an account? <a href="#" class="text-white underline hover:no-underline transition-all">Sign up here</a></h3>
+                                    </div>
+
+                                    <form action="" method="post" class="text-left text-white space-y-8 px-8 py-14 ">
+                                        <div class="space-y-4">
+                                            <button type="button" class="flex items-center justify-center gap-x-2 w-full text-blue-600 hover:text-white hover:bg-blue-500 border border-blue-600 font-bold rounded-md px-5 py-2 transition-all duration-500 ">
+                                                <i class="fab fa-google"></i>
+                                                <span>Sign in with Google</span>
+                                            </button>
+                                            <button type="button" class="flex items-center justify-center gap-x-2 w-full text-blue-600 hover:text-white hover:bg-blue-500 border border-blue-600 font-bold rounded-md px-5 py-2 transition-all duration-500 ">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <span>Sign in with Facebook</span>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <hr class="border-t border-gray-700 w-3/6 inline-block"><span>Or</span>
+                                            <hr class="border-t border-gray-700 w-3/6 inline-block">
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div class="space-y-1">
+                                                <label>Email adderss</label>
+                                                <input id="" type="email" class="form-input w-full text-md font-semibold bg-gray-600 bg-opacity-30 rounded-lg border border-gray-700 focus:border-gray-600 focus:bg-gray-800 focus:ring-transparent placeholder-gray-400" placeholder="mail" value="">
+                                            </div>
+                                            <div class="space-y-1">
+                                                <label class="flex items-center justify-between">
+                                                    <h4>Password</h4>
+                                                    <h4 class="underline hover:no-underline text-sm">Forger password</h4>
+                                                </label>
+                                                <input id="" type="password" class="form-input w-full text-md font-semibold bg-gray-600 bg-opacity-30 rounded-lg border border-gray-700 focus:border-gray-600 focus:bg-gray-800 focus:ring-transparent" placeholder="password" value="">
+                                            </div>
+                                            <div>
+                                                <button type="button" class="mt-6 flex justify-center gap-x-2 w-full text-white bg-red-500 rounded-md px-5 py-2 transition-all duration-500 ">Sign in</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- modal sign up page -->
+        <li class="border border-gray-800 rounded-lg">
+            <!-- modal -->
+            <div x-data="{ open: false }" @keydown.window.escape="open = false" @click.away="open=false">
+                <div class="relative group flex flex-col-reverse">
+                    <button class="py-2 px-4 flex gap-1 text-gray-400 hover:text-white transition-all" @click="open = true">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span class="font-medium ">Sign up</span>
+                    </button>
+                </div>
+                <div x-show="open" class="fixed z-50 inset-0 overflow-y-auto my-auto top-5 -bottom-5" x-ref="dialog" aria-modal="true" style="display: none;">
+                    <div class="flex min-h-screen sm:block md:px-2 lg:px-4" style="font-size: 0;">
+                        <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" x-description="Modal panel, show/hide based on modal state." class="w-full lg:w-9/12 mx-auto transform transition p-2 md:my-8 sm:align-middle z-1010" style="display: none;">
+                            <div class=" relative bg-gray-900 text-white rounded-lg  shadow-2xl overflow-hidden border border-gray-800">
+                                <!-- close-button -->
+                                <button type="button" class="absolute top-4 right-4 text-gray-400 trnsition-all duration-300 hover:text-red-500" @click="open = false">
+                                    <span class="sr-only">Close</span>
+                                    <svg class="h-6 w-6" x-description="Heroicon name: outline/x" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-base divide-x divide-gray-800 ">
+                                    <div class="px-8 pt-8 md:py-14 space-y-4">
+                                        <h1 class="text-3xl font-bold pb-5">Join Finder.<br>Get premium benefits:</h1>
+                                        <div class="space-y-1 pt-5">
+                                            <div class="flex items-center gap-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                <p>Add and promote your listings</p>
+                                            </div>
+                                            <div class="flex items-center gap-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                <p>Easily manage your wishlist</p>
+                                            </div>
+                                            <div class="flex items-center gap-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                <p>Leave reviews</p>
+                                            </div>
+                                        </div>
+                                        <img src="images/demo/signup-dark.svg" alt="" class="p-4 block w-full h-auto text-center">
+                                        <h3 class="text-gray-400">Don't have an account? <a href="#" class="text-white underline hover:no-underline transition-all">Sign in here</a></h3>
+                                    </div>
+                                    <form action="" method="post" class="text-left text-white space-y-8 px-8 pt-2 pb-8 md:py-14 ">
+                                        <div class="space-y-4">
+                                            <button type="button" class="flex items-center justify-center gap-x-2 w-full text-blue-600 hover:text-white hover:bg-blue-500 border border-blue-600 font-bold rounded-md px-5 py-2 transition-all duration-500 ">
+                                                <i class="fab fa-google"></i>
+                                                <span>Sign in with Google</span>
+                                            </button>
+                                            <button type="button" class="flex items-center justify-center gap-x-2 w-full text-blue-600 hover:text-white hover:bg-blue-500 border border-blue-600 font-bold rounded-md px-5 py-2 transition-all duration-500 ">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <span>Sign in with Facebook</span>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <hr class="border-t border-gray-700 w-3/6 inline-block"><span>Or</span>
+                                            <hr class="border-t border-gray-700 w-3/6 inline-block">
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div class="space-y-1">
+                                                <label>Full name</label>
+                                                <input id="" type="text" name="full_name" class="form-input w-full text-md font-semibold bg-gray-600 bg-opacity-30 rounded-lg border border-gray-700 focus:border-gray-600 focus:bg-gray-800 focus:ring-transparent placeholder-gray-400" placeholder="" value="">
+                                            </div>
+                                            <div class="space-y-1">
+                                                <label>Email adderss</label>
+                                                <input id="" type="email" name="email" class="form-input w-full text-md font-semibold bg-gray-600 bg-opacity-30 rounded-lg border border-gray-700 focus:border-gray-600 focus:bg-gray-800 focus:ring-transparent placeholder-gray-400" placeholder="" value="">
+                                            </div>
+                                            <div class="space-y-1">
+                                                <label class="flex items-center gap-1">
+                                                    <h4>Password</h4>
+                                                    <span class="text-gray-500 text-sm">min.8 char</span>
+                                                </label>
+                                                <input id="" type="password" name="password" class="form-input w-full text-md font-semibold bg-gray-600 bg-opacity-30 rounded-lg border border-gray-700 focus:border-gray-600 focus:bg-gray-800 focus:ring-transparent" placeholder="" value="">
+                                            </div>
+                                            <div class="space-y-1">
+                                                <label>
+                                                    <h4>Confirm password</h4>
+                                                </label>
+                                                <input id="" type="password" name="confirm_password" class="form-input w-full text-md font-semibold bg-gray-600 bg-opacity-30 rounded-lg border border-gray-700 focus:border-gray-600 focus:bg-gray-800 focus:ring-transparent" placeholder="" value="">
+                                            </div>
+                                            <div class="flex gap-x-2 ">
+                                                <input id="" type="checkbox" name="" class="form-checkbox rounded text-transparent bg-transparent border-0 ring-2 ring-red-500 focus:ring-red-500 focus:ring-offset-0 mt-1">
+                                                <span class="text-gray-400">By joining, I agree to the <a class="text-white font-medium cursor-pointer underline hover:no-underline">Terms of use</a> and <a class="text-white font-medium cursor-pointer underline hover:no-underline">Privacy policy</a></span>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="mt-6 flex justify-center gap-x-2 w-full text-white bg-red-500 rounded-md px-5 py-2 transition-all duration-500 ">Sign up</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>				</div>
+			</div>
+			<!-- mobile-buttons -->
+			<div class="flex items-center gap-x-2">
+				<!-- Sign in button-->
+				<button class="hidden lg:flex items-center font-semibold px-5 rounded-md text-white whitespace-nowrap">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+					</svg>
+					<a href="#" class="ml-2">Sign in</a>
+				</button>
+				<!-- sell-button -->
+				<button class="flex items-center font-bold px-5 py-2 rounded-md text-white bg-red-600">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+					</svg>
+					<a href="#" class="ml-2">Sell car</a>
+				</button>
+			</div>
+		</div>
+	</div>
+</nav>	</header>
+
+	<main class="bg-gray-900">
+		<!-- Section-of-home  -->
+
+<section id="home" class="bg-gray-900 bg-cover bg-no-repeat" style="background-image: url(images/demo/bg.png);">
+    <div class="mx-auto px-2 sm:px-3 py-8">
+        <div class="grid grid-cols-12 space-x-6 pt-12" style="background-image:url(../iamges/demo/bg.png);">
+            <div class="col-span-full md:col-span-5 space-y-8">
+                <h1 class=" text-4xl lg:text-5xl text-white font-bold">Easy way to find the right car</h1>
+                <p class="md:text-lg lg:text-xl text-gray-500 font-semibold leading-8">Find is a leadign digital marketplace for the automotive industy that connects car shoppers with sellers</p>
+            </div>
+            <div class="col-span-full md:col-span-7 mt-6">
+                <img class="block" src="images/demo/hero-img.png">
+            </div>
+        </div>
+    </div>
+</section>		<!-- Section-of-homeSearch  -->
+
+<section id="homeSearch" class="bg-gray-900">
+    <div class="mx-auto px-2 sm:px-3 py-8 space-y-8">
+        <div class="flex gap-x-3 items-center">
+            <button class="text-xl text-yellow-500 bg-white rounded-lg font-semibold py-3 px-4">New</button>
+            <button class="text-xl text-white bg-gray-800 rounded-lg font-semibold py-3 px-4">Used</button>
+        </div>
+        <div class="grid grid-cols-12 sm:gap-2 items-center text-gray-500 text-lg bg-gray-500 bg-opacity-20 bg-transparent divide-y lg:divide-y-0 divide-gray-600 border border-gray-600 rounded-lg p-2">
+            <div class="col-span-full lg:col-span-2 lg:border-r border-gray-600 p-2">
+                <!-- Keywords -->
+                <div class="flex items-center gap-x-2 font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="" class="w-full focus:outline-none text-gray-400 bg-transparent " placeholder="Keywords">
+                </div>
+            </div>
+            <div class="col-span-full lg:col-span-8 p-0 sm:pt-2">
+                <div class="grid grid-cols-12 items-center divide-y sm:divide-y-0 md:divide-x divide-gray-600">
+                    <!-- make -->
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 p-2">
+                        <div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+                            <button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="dropdown.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                                </svg>
+                                <h2>Make</h2>
+                                <svg class="h-4 w-4 mt-2 ml-2 transition-all duration-300" :class="dropdown ? 'rotate-180 transform' : ''" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="origin-top-right absolute ml-2 mt-2 rounded-md shadow-lg py-1 px-5 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" x-show="dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="dropdown = false" @keydown.enter.prevent="dropdown = false; focusButton()" @keyup.space.prevent="dropdown = false; focusButton()">
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Real Estate Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car Finder Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Job Board Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">City Guide Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Main Page</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Components</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- model -->
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 p-2">
+                        <div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+                            <button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2 " id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="dropdown.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                                </svg>
+                                <h2>Model</h2>
+                                <svg class="h-4 w-4 mt-2 ml-2 transition-all duration-300" :class="dropdown ? 'rotate-180 transform' : ''" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="origin-top-right absolute ml-2 mt-2 rounded-md shadow-lg py-1 px-5 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" x-show="dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="dropdown = false" @keydown.enter.prevent="dropdown = false; focusButton()" @keyup.space.prevent="dropdown = false; focusButton()">
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Real Estate Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car Finder Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Job Board Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">City Guide Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Main Page</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Components</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- body type -->
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 p-2">
+                        <div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+                            <button type="button" class="flex items-center justify-center font-semibold text-gray-300 whitespace-nowrap hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="dropdown.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                                </svg>
+                                <h2>Body type</h2>
+                                <svg class="h-4 w-4 mt-2 ml-2 transition-all duration-300" :class="dropdown ? 'rotate-180 transform' : ''" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="origin-top-right absolute ml-2 mt-2 rounded-md shadow-lg py-1 px-5 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" x-show="dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="dropdown = false" @keydown.enter.prevent="dropdown = false; focusButton()" @keyup.space.prevent="dropdown = false; focusButton()">
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Real Estate Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car Finder Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Job Board Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">City Guide Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Main Page</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Components</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Location -->
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 p-2">
+                        <div x-data="{ dropdown: false }" x-init="init()" @keydown.escape.stop="dropdown = false; focusButton()" @click.away="dropdown = false" class="relative z-10">
+                            <button type="button" class="flex font-semibold text-gray-300 hover:text-white px-2" id="user-menu-button" x-ref="button" @click="dropdown =! dropdown" @keyup.space.prevent="dropdown =! dropdown" @keydown.enter.prevent="dropdown =! dropdown" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="dropdown.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <h2>Location</h2>
+                                <svg class="h-4 w-4 mt-2 ml-2 transition-all duration-300" :class="dropdown ? 'rotate-180 transform' : ''" x-description="Heroicon name: solid/chevron-down" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            <div class="origin-top-right absolute ml-2 mt-2 rounded-md shadow-lg py-1 px-5 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" x-show="dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="dropdown = false" @keydown.enter.prevent="dropdown = false; focusButton()" @keyup.space.prevent="dropdown = false; focusButton()">
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem" tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Real Estate Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1" id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Car Finder Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Job Board Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 text-semibold hover:text-red-600 duration-700 border-b" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">City Guide Demo</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Main Page</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Components</a>
+                                <a href="#" class="block py-2 text-gray-500 hover:text-red-600 duration-700" :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1" id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="dropdown = false; focusButton()">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Searching 
+                    <div class="col-span-full lg:col-span-2 py-2 md:py-0">
+                        <div class="flex items-center justify-end gap-x-2 font-semibold">
+                            <button class="w-full text-lg text-white font-semibold bg-yellow-700 rounded-lg py-2 px-12">Search</button>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <!-- Searching -->
+            <div class="col-span-full lg:col-span-2 pt-2">
+                <div class="flex items-center justify-end gap-x-2 font-semibold">
+                    <button class="w-full text-lg text-white font-semibold bg-yellow-700 rounded-lg py-2 px-12">Search</button>
+                </div>
+            </div>
+        </div>
+</section>		<!-- Section-of-homeCarBodyTypes  -->
+
+<section id="homeCarBodyTypes" class="bg-gray-900">
+    <div class="mx-auto px-2 sm:px-3 py-8 space-y-8">
+        <div class="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:justify-between">
+            <h1 class="text-3xl text-white font-bold">Popular car body types</h1>
+            <button class="text-md text-gray-400 font-semibold text-left">View all </button>
+        </div>
+        <div class="grid grid-cols-12 lg:grid-cols-10 gap-4 items-center justify-center">
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-sedan.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Senda</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-suv.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Suv</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-wagon.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Wagon</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-Crossover.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Crossover</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-coupe.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Coupe</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-pickup.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Pickup</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-typs-sport.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Sport</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-compact.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Compact</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/body-types-convertible.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Convertible</p>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-4 md:col-span-3 lg:col-span-2 relative flex flex-col items-center pb-6  bg-clip-border rounded-lg border-1 border-green-200  transition duration-300 ease-in-out hover:bg-gray-800 group">
+                <div class="space-y-2">
+                    <img class="block" src="images/demo/mpv.svg">
+                    <p class="text-gray-500 text-xl font-semibold text-center group-hover:text-white transition-all duration-300">Famely MPV</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>		<!-- Section-of-HomeTopOffers  -->
+
+<section id="HomeTopOffers">
+    <div class="mx-auto px-2 sm:px-3 space-y-8">
+        <h2 class="text-3xl text-white font-bold ">Top offers</h2>
+        <div class="grid grid-cols-12 gap-3">
+            <!-- big-cards -->
+            <div class="col-span-full lg:col-span-6 relative flex flex-col bg-gray-800 bg-clip-border rounded-lg overflow-hidden">
+                <div class="mb-0">
+                    <img class="h-full w-full object-cover object-center " src="images/demo/Offers05.jpg" alt="image">
+                </div>
+                <div class="flex justify-between flex-auto p-4">
+                    <div class="space-y-1 ">
+                        <p class="text-white text-md">2015</p>
+                        <h4 class="text-gray-300 text-2xl font-bold">Mercedes Benz Converible Coupe</h4>
+                        <h5 class="text-red-500 text-xl font-bold">$25,800</h5>
+                        <div class="flex items-center gap-x-1 text-gray-300 text- font-semibold">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>New york</span>
+                        </div>
+                    </div>
+                    <div class="space-x-1 whitespace-nowrap">
+                        <input type="checkbox" class="form-checkbox rounded text-transparent bg-transparent border-0 ring-2 ring-red-500 focus:ring-red-500 focus:ring-offset-0">
+                        <label for="" class="text-white">Compare</label>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white p-4 border-t border-gray-700">
+                    <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                        <span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+                        <small class="block font-medium">48K mi</small>
+                    </div>
+                    <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                        <span><i class="text-2xl fas fa-cogs"></i></span>
+                        <small class="block font-medium">automatic</small>
+                    </div>
+                    <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                        <span><i class="text-2xl fas fa-gas-pump"></i></span>
+                        <small class="block font-medium">Gasoline</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-full lg:col-span-6 space-y-8">
+                <!-- horezental-card-1 -->
+                <div class="grid grid-cols-12 gap-1 bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="col-span-full sm:col-span-5">
+                        <img class="h-full object-cover" src="images/demo/Offers07.jpg" alt="image">
+                    </div>
+                    <div class="col-span-full sm:col-span-7 p-4 space-y-4">
+                        <div class="flex justify-between flex-auto">
+                            <div class="space-y-1 ">
+                                <p class="text-white text-md">2015</p>
+                                <h4 class="text-gray-300 text-2xl font-bold">Mercedes Benz Converible Coupe</h4>
+                                <h5 class="text-red-500 text-xl font-bold">$25,800</h5>
+                                <div class="flex items-center gap-x-1 text-gray-300 text- font-semibold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span>New york</span>
+                                </div>
+                            </div>
+                            <div class="space-x-1 whitespace-nowrap">
+                                <input type="checkbox" class="form-checkbox rounded text-transparent bg-transparent border-0 ring-2 ring-red-500 focus:ring-red-500 focus:ring-offset-0">
+                                <label for="" class="text-white">Compare</label>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 pt-4">
+                            <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                                <span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+                                <small class="block">48K mi</small>
+                            </div>
+                            <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                                <span><i class="text-2xl fas fa-cogs"></i></span>
+                                <small class="block">automatic</small>
+                            </div>
+                            <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                                <span><i class="text-2xl fas fa-gas-pump"></i></span>
+                                <small class="block">Gasoline</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- horezental-card-2 -->
+                <div class="grid grid-cols-12 gap-1 bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="col-span-full sm:col-span-5">
+                        <img class="h-full object-cover" src="images/demo/latest1.jpg" alt="image">
+                    </div>
+                    <div class="col-span-full sm:col-span-7 p-4 space-y-4">
+                        <div class="flex justify-between flex-auto">
+                            <div class="space-y-1 ">
+                                <p class="text-white text-md">2015</p>
+                                <h4 class="text-gray-300 text-2xl font-bold">Mercedes Benz Converible Coupe</h4>
+                                <h5 class="text-red-500 text-xl font-bold">$25,800</h5>
+                                <div class="flex items-center gap-x-1 text-gray-300 text- font-semibold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span>New york</span>
+                                </div>
+                            </div>
+                            <div class="space-x-1 whitespace-nowrap">
+                                <input type="checkbox" class="form-checkbox rounded text-transparent bg-transparent border-0 ring-2 ring-red-500 focus:ring-red-500 focus:ring-offset-0">
+                                <label for="" class="text-white">Compare</label>
+                            </div>
+                        </div>
+                        <!-- card-footer -->
+                        <div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 pt-4">
+                            <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                                <span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+                                <small class="block">48K mi</small>
+                            </div>
+                            <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                                <span><i class="text-2xl fas fa-cogs"></i></span>
+                                <small class="block">automatic</small>
+                            </div>
+                            <div class="text-center bg-gray-900 rounded-md py-2 h-full">
+                                <span><i class="text-2xl fas fa-gas-pump"></i></span>
+                                <small class="block">Gasoline</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>		<!-- Section-of-homeBrandicons -->
+
+<section id="homeBrandicons" class="bg-gray-900">
+    <div class="mx-auto px-2 sm:px-3 py-8 space-y-8">
+        <div class="grid grid-cols-12 gap-10 items-center gap-x-3">
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/opel.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/audi.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/mercedes.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/toyota.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/mazda.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/nissan.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/hyundai.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/lexus.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/honda.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/renault.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/infiniti.svg" alt="images">
+            </div>
+            <div class="col-span-3 md:col-span-2 lg:col-span-1">
+                <img class="opacity-40 hover:opacity-100 transition-all" src="images/demo/mitsubishi.svg" alt="images">
+            </div>
+        </div>
+    </div>
+</section>		<!-- Section-of-homeFinder-apart.php  -->
+
+<div id="homeFinder-apart" class="bg-gray-900 mx-auto px-2 sm:px-3 py-8">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <h1 class="text-white text-3xl font-bold">What sets Finder apart?</h1>
+        <buttoon role="button" class="flex items-center gap-x-1 font-semibold text-gray-400 transition-all duration-300 hover:text-white">
+            <span class="md:text-xl  font-semibold">How to sell cars on Finder</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+        </buttoon>
+    </div>
+    <div class="grid grid-cols-10 items-center py-12">
+        <div class="col-span-full md:col-span-4 space-y-6">
+            <div class="flex gap-x-3 md:flex-row-reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 text-red-600 h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <div class="space-y-2 md:text-right">
+                    <h3 class="text-xl text-white font-bold">
+                        Over 1 Million Listings</h3>
+                    <p class="text-gray-400 leading-6">That’s more than you’ll find on any other major online automotive marketplace in the USA.</p>
+                </div>
+            </div>
+            <div class="flex gap-x-3 md:flex-row-reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 text-red-600 h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <div class="space-y-2 md:text-right">
+                    <h3 class="text-xl text-white font-bold">
+                        Non-Stop Innovation</h3>
+                    <p class="text-gray-400 leading-6">Our team is constantly developing new features that make the process of buying and selling a car simpler.</p>
+                </div>
+            </div>
+            <div class="flex gap-x-3 md:flex-row-reverse">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 text-red-600 h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div class="space-y-2 md:text-right">
+                    <h3 class="text-xl text-white font-bold">
+                        Valuable Insights</h3>
+                    <p class="text-gray-400 leading-6">Our team is constantly developing new features that make the process of buying and selling a car simpler.</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:block md:col-span-2 relative h-full">
+            <img class="h-40 w-auto absolute inset-0 mx-auto z-10" src="images/demo/h-car.svg" alt="car">
+            <span class="border-2 border-dashed border-gray-300 absolute w-px h-full left-1/2 right-1/2"></span>
+        </div>
+        <div class="col-span-full md:col-span-4 space-y-6 pt-6 md:mt-0">
+            <div class="flex gap-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 text-red-600 h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="space-y-2">
+                    <h3 class="text-xl text-white font-bold">
+                        Valuable Insights</h3>
+                    <p class="text-gray-400 leading-6">We provide free access to key info like dealer reviews, market value, price drops.</p>
+                </div>
+            </div>
+            <div class="flex gap-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 text-red-600 h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="space-y-2">
+                    <h3 class="text-xl text-white font-bold">
+                        Consumer-First Mentality</h3>
+                    <p class="text-gray-400 leading-6">We focus on building the most transparent, trustworthy experience for our users, and we’ve proven that works for dealers, too.</p>
+                </div>
+            </div>
+            <div class="flex gap-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 text-red-600 h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <div class="space-y-2">
+                    <h3 class="text-xl text-white font-bold">
+                        Online Car Appraisal</h3>
+                    <p class="text-gray-400 leading-6">Specify the parameters of your car to form its market value on the basis of similar cars on Finder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>		<!-- Section-of-homeLatestNews-->
+
+
+	<div id="homeLatestNews" class="bg-gray-900 mx-auto px-2 sm:px-3 py-8 space-y-10">
+		<div class="flex flex-col gap-y-4 sm:flex-row sm:items-center sm:justify-between">
+			<h1 class="text-white text-3xl font-bold">Latest Car</h1>
+			<div class="flex items-center gap-x-6">
+				<div class="space-x-2">
+					<button class="text-white bg-gray-800 rounded-md px-4 py-2">New</button>
+					<button class="text-red-600 bg-white rounded-md px-4 py-2">Used</button>
+				</div>
+				<button class="text-gray-300 font-semibold">View all</button>
+			</div>
+		</div>
+	
+		<style>	
+		  .swiper-pagination-bullet {
+			width: 1rem;;
+			height: 0.375rem;
+			color: #000;
+			opacity: 1;
+			border-radius: 50rem!important;
+			background: rgba(230, 230, 230, 0.5);
+		  }
+
+		  .swiper-pagination-bullet-active {
+			width: 30px;
+			height: 0.375rem;
+			background: white;
+			border-radius: 50rem!important;
+		  }
+		</style>
+		<div class="swiper homeLatest pb-12">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide ">
+					<div class="relative bg-gray-800 rounded-lg overflow-hidden flex flex-col bg-clip-border rounded-lg transition-all duration-300 border border-gray-800 group hover:border-gray-700">
+						<div class="mb-0 relative bg-cover ">
+							<img class="h-56 w-full object-cover" src="images/demo/10.jpg" alt="image">
+							<div class="absolute top-3 inset-x-3">
+								<div class="flex items-center justify-between">
+									<div class="flex gap-2 text-sm text-white">
+										<button class="bg-blue-600 px-3 py-0.5 rounded-md">Used</button>
+										<button class="bg-green-500 px-3 py-0.5 rounded-md">Certified</button>
+									</div>
+									<button class="h-7 w-7 bg-white rounded-full text-red-700 transition-all dutaion-300 opacity-0 group-hover:opacity-100"><i class="far fa-heart"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between flex-auto px-4 py-8">
+							<div class="space-y-1 ">
+								<p class="text-white text-md">2021</p>
+								<h4 class="text-gray-400 text-xl font-bold">Mercedes Benz Converible Coupe</h4>
+								<h5 class="text-red-500 font-bold">$25,800</h5>
+								<p class="text-gray-400 text-sm font-semibold">New york</p>
+							</div>
+							<div class="space-x-1 whitespace-nowrap">
+								<input type="checkbox" class="form-checkbox rounded bg-transparent focus:ring-0 focus:ring-offset-0">
+								<label for="" class="text-white">Compare</label>
+							</div>
+						</div>
+						<!--  card-footer -->
+						<div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 p-4">
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+								<small class="block">48K mi</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-cogs"></i></span>
+								<small class="block">automatic</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-gas-pump"></i></span>
+								<small class="block">Gasoline</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide ">
+					<div class="relative bg-gray-800 rounded-lg overflow-hidden flex flex-col bg-clip-border rounded-lg transition-all duration-300 border border-gray-800 group hover:border-gray-700">
+						<div class="mb-0 relative bg-cover ">
+							<img class="h-56 w-full object-cover" src="images/demo/09.jpg" alt="image">
+							<div class="absolute top-3 inset-x-3">
+								<div class="flex items-center justify-between">
+									<div class="flex gap-2 text-sm text-white">
+										<button class="bg-blue-600 px-3 py-0.5 rounded-md">Used</button>
+										<button class="bg-green-500 px-3 py-0.5 rounded-md">Certified</button>
+									</div>
+									<button class="h-7 w-7 bg-white rounded-full text-red-700 transition-all dutaion-300 opacity-0 group-hover:opacity-100"><i class="far fa-heart"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between flex-auto px-4 py-8">
+							<div class="space-y-1 ">
+								<p class="text-white text-md">2021</p>
+								<h4 class="text-gray-400 text-xl font-bold">Mercedes Benz Converible Coupe</h4>
+								<h5 class="text-red-500 font-bold">$25,800</h5>
+								<p class="text-gray-400 text-sm font-semibold">New york</p>
+							</div>
+							<div class="space-x-1 whitespace-nowrap">
+								<input type="checkbox" class="form-checkbox rounded bg-transparent focus:ring-0 focus:ring-offset-0">
+								<label for="" class="text-white">Compare</label>
+							</div>
+						</div>
+						<!--  card-footer -->
+						<div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 p-4">
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+								<small class="block">48K mi</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-cogs"></i></span>
+								<small class="block">automatic</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-gas-pump"></i></span>
+								<small class="block">Gasoline</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide ">
+					<div class="relative bg-gray-800 rounded-lg overflow-hidden flex flex-col bg-clip-border rounded-lg transition-all duration-300 border border-gray-800 group hover:border-gray-700">
+						<div class="mb-0 relative bg-cover ">
+							<img class="h-56 w-full object-cover" src="images/demo/11.jpg" alt="image">
+							<div class="absolute top-3 inset-x-3">
+								<div class="flex items-center justify-between">
+									<div class="flex gap-2 text-sm text-white">
+										<button class="bg-blue-600 px-3 py-0.5 rounded-md">Used</button>
+										<button class="bg-green-500 px-3 py-0.5 rounded-md">Certified</button>
+									</div>
+									<button class="h-7 w-7 bg-white rounded-full text-red-700 transition-all dutaion-300 opacity-0 group-hover:opacity-100"><i class="far fa-heart"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between flex-auto px-4 py-8">
+							<div class="space-y-1 ">
+								<p class="text-white text-md">2021</p>
+								<h4 class="text-gray-400 text-xl font-bold">Mercedes Benz Converible Coupe</h4>
+								<h5 class="text-red-500 font-bold">$25,800</h5>
+								<p class="text-gray-400 text-sm font-semibold">New york</p>
+							</div>
+							<div class="space-x-1 whitespace-nowrap">
+								<input type="checkbox" class="form-checkbox rounded bg-transparent focus:ring-0 focus:ring-offset-0">
+								<label for="" class="text-white">Compare</label>
+							</div>
+						</div>
+						<!--  card-footer -->
+						<div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 p-4">
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+								<small class="block">48K mi</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-cogs"></i></span>
+								<small class="block">automatic</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-gas-pump"></i></span>
+								<small class="block">Gasoline</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide ">
+					<div class="relative bg-gray-800 rounded-lg overflow-hidden flex flex-col bg-clip-border rounded-lg transition-all duration-300 border border-gray-800 group hover:border-gray-700">
+						<div class="mb-0 relative bg-cover ">
+							<img class="h-56 w-full object-cover" src="images/demo/vendor-2.jpg" alt="image">
+							<div class="absolute top-3 inset-x-3">
+								<div class="flex items-center justify-between">
+									<div class="flex gap-2 text-sm text-white">
+										<button class="bg-blue-600 px-3 py-0.5 rounded-md">Used</button>
+										<button class="bg-green-500 px-3 py-0.5 rounded-md">Certified</button>
+									</div>
+									<button class="h-7 w-7 bg-white rounded-full text-red-700 transition-all dutaion-300 opacity-0 group-hover:opacity-100"><i class="far fa-heart"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between flex-auto px-4 py-8">
+							<div class="space-y-1 ">
+								<p class="text-white text-md">2021</p>
+								<h4 class="text-gray-400 text-xl font-bold">Mercedes Benz Converible Coupe</h4>
+								<h5 class="text-red-500 font-bold">$25,800</h5>
+								<p class="text-gray-400 text-sm font-semibold">New york</p>
+							</div>
+							<div class="space-x-1 whitespace-nowrap">
+								<input type="checkbox" class="form-checkbox rounded bg-transparent focus:ring-0 focus:ring-offset-0">
+								<label for="" class="text-white">Compare</label>
+							</div>
+						</div>
+						<!--  card-footer -->
+						<div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 p-4">
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+								<small class="block">48K mi</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-cogs"></i></span>
+								<small class="block">automatic</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-gas-pump"></i></span>
+								<small class="block">Gasoline</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide ">
+					<div class="relative bg-gray-800 rounded-lg overflow-hidden flex flex-col bg-clip-border rounded-lg transition-all duration-300 border border-gray-800 group hover:border-gray-700">
+						<div class="mb-0 relative bg-cover ">
+							<img class="h-56 w-full object-cover" src="images/demo/vendor-3.jpg" alt="image">
+							<div class="absolute top-3 inset-x-3">
+								<div class="flex items-center justify-between">
+									<div class="flex gap-2 text-sm text-white">
+										<button class="bg-blue-600 px-3 py-0.5 rounded-md">Used</button>
+										<button class="bg-green-500 px-3 py-0.5 rounded-md">Certified</button>
+									</div>
+									<button class="h-7 w-7 bg-white rounded-full text-red-700 transition-all dutaion-300 opacity-0 group-hover:opacity-100"><i class="far fa-heart"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between flex-auto px-4 py-8">
+							<div class="space-y-1 ">
+								<p class="text-white text-md">2021</p>
+								<h4 class="text-gray-400 text-xl font-bold">Mercedes Benz Converible Coupe</h4>
+								<h5 class="text-red-500 font-bold">$25,800</h5>
+								<p class="text-gray-400 text-sm font-semibold">New york</p>
+							</div>
+							<div class="space-x-1 whitespace-nowrap">
+								<input type="checkbox" class="form-checkbox rounded bg-transparent focus:ring-0 focus:ring-offset-0">
+								<label for="" class="text-white">Compare</label>
+							</div>
+						</div>
+						<!--  card-footer -->
+						<div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 p-4">
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+								<small class="block">48K mi</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-cogs"></i></span>
+								<small class="block">automatic</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-gas-pump"></i></span>
+								<small class="block">Gasoline</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide ">
+					<div class="relative bg-gray-800 rounded-lg overflow-hidden flex flex-col bg-clip-border rounded-lg transition-all duration-300 border border-gray-800 group hover:border-gray-700">
+						<div class="mb-0 relative bg-cover ">
+							<img class="h-56 w-full object-cover" src="images/demo/vendor-1.jpg" alt="image">
+							<div class="absolute top-3 inset-x-3">
+								<div class="flex items-center justify-between">
+									<div class="flex gap-2 text-sm text-white">
+										<button class="bg-blue-600 px-3 py-0.5 rounded-md">Used</button>
+										<button class="bg-green-500 px-3 py-0.5 rounded-md">Certified</button>
+									</div>
+									<button class="h-7 w-7 bg-white rounded-full text-red-700 transition-all dutaion-300 opacity-0 group-hover:opacity-100"><i class="far fa-heart"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between flex-auto px-4 py-8">
+							<div class="space-y-1 ">
+								<p class="text-white text-md">2021</p>
+								<h4 class="text-gray-400 text-xl font-bold">Mercedes Benz Converible Coupe</h4>
+								<h5 class="text-red-500 font-bold">$25,800</h5>
+								<p class="text-gray-400 text-sm font-semibold">New york</p>
+							</div>
+							<div class="space-x-1 whitespace-nowrap">
+								<input type="checkbox" class="form-checkbox rounded bg-transparent focus:ring-0 focus:ring-offset-0">
+								<label for="" class="text-white">Compare</label>
+							</div>
+						</div>
+						<!--  card-footer -->
+						<div class="grid grid-cols-3 gap-x-3 items-center justify-center mt-auto text-white border-t border-gray-700 p-4">
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-tachometer-alt"></i></span>
+								<small class="block">48K mi</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-cogs"></i></span>
+								<small class="block">automatic</small>
+							</div>
+							<div class="text-center bg-gray-900 rounded-md py-2 h-full">
+								<span><i class="text-2xl fas fa-gas-pump"></i></span>
+								<small class="block">Gasoline</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+	</div>		<!-- Section-of-homeCarosel -->
+	<div class="swiper homeCarousel">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="bg-gray-800 grid grid-cols-12 items-center gap-1 rounded-lg px-5 py-8 m-3">
+					<div class="col-span-full md:col-span-4 text-center md:text-left space-y-4">
+						<h1 class="capitalize text-2xl text-white font-bold">auto marker</h1>
+						<h1 class="text-xl text-gray-300 pb-2">Lorem ipsum dolor sit amet consec.</h1>
+						<button class="flex items-center mx-auto md:mx-0 bg-red-500 text-white text-xl font-semibold py-3 px-6 rounded-lg">Go to shop
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+							</svg>
+						</button>
+					</div>
+					<div class="col-span-full md:col-span-8">
+						<div class="grid grid-cols-12 items-center gap-4">
+							<div class="col-span-6 lg:col-span-3 text-center">
+								<img class="p-4" src="images/demo/homeCarosel1-1.png" alt="image">
+								<h6 class="capitalize text-white text-xl font-semibold">seat covers</h6>
+							</div>
+							<div class="col-span-6 lg:col-span-3 text-center space-y-3">
+								<img class="p-4" src="images/demo/homeCarosel1-2.png" alt="image">
+								<h6 class="capitalize text-white text-xl font-semibold">seat covers</h6>
+							</div>
+							<div class="col-span-6 lg:col-span-3 text-center space-y-3">
+								<img class="p-4" src="images/demo/homeCarosel1-3.png" alt="image">
+								<h6 class="capitalize text-white text-xl font-semibold">seat covers</h6>
+							</div>
+							<div class="col-span-6 lg:col-span-3 text-center space-y-3">
+								<img class="p-4" src="images/demo/homeCarosel1-4.png" alt="image">
+								<h6 class="capitalize text-white text-xl font-semibold">seat covers</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="swiper-slide">
+				<div class="bg-gray-800  grid grid-cols-12 items-center gap-x-2 gap-y-8 rounded-lg  px-5 py-12 m-3  ">
+					<div class="col-span-full md:col-span-6 text-center md:text-left space-y-4 py-0.5">
+						<h1 class="capitalize text-2xl text-white font-bold">Car sale in 24 hours</h1>
+						<h1 class="text-xl text-gray-300 pb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo vitae illum consequuntur?</h1>
+						<button class="flex items-center mx-auto md:mx-0 bg-red-500 text-white text-xl font-semibold py-3 px-6 rounded-lg">Sell my car
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+								<path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+							</svg>
+						</button>
+					</div>
+					<div class="col-span-full md:col-span-6">
+						<div class="grid grid-cols-12 gap-y-4 ">
+							<div class="col-span-4 md:col-span-6 lg:col-span-4 text-center space-y-3">
+								<img class="block bg-gray-900 rounded-lg m-auto p-6" src="images/demo/buyers.svg" alt="image">
+								<h6 class="capitalize text-white text-lg font-medium">seat covers</h6>
+							</div>
+							<div class="col-span-4 md:col-span-6 lg:col-span-4 text-center space-y-3">
+								<img class="block bg-gray-900 rounded-lg m-auto p-6" src="images/demo/tools.svg" alt="image">
+								<h6 class="capitalize text-white text-lg font-medium">smart tools</h6>
+							</div>
+							<div class="col-span-4 md:col-span-6 lg:col-span-4 text-center space-y-3">
+								<img class="block bg-gray-900 rounded-lg p-6 m-auto" src="images/demo/handshake.svg" alt="image">
+								<h6 class="capitalize text-white text-lg font-medium">The offer you deserve</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flex items-center gap-y-4 space-x-2 ml-3 mt-4">
+			<div class="swiper-button-next relative inset-0 rounded-full text-white bg-gray-800 h-9 w-9"><i class="fas fa-angle-left"></i></div>
+			<div class="swiper-button-prev relative inset-0 rounded-full text-white bg-gray-800 h-9 w-9"><i class="fas fa-angle-right"></i></div>
+		</div>
+	</div>		<!-- Section-of-homeApp  -->
+
+<section id="homeApp" class="bg-gray-900">
+    <div class="mx-auto px-2 sm:px-3 py-8">
+        <div class="grid grid-cols-12 items-center justify-center">
+            <div class="w-4/5 col-span-full md:col-span-6 order-2 sm:order-1 space-y-6 ml-auto mr-0">
+                <h2 class="text-white text-3xl font-bold">Get the top-rated app! </h2>
+                <p class="text-gray-300 text-xl pb-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, in. Expedita temporibus, architecto ipsa corporis dolorem hic debitis, reprehenderit accusamus.</p>
+                <div class="flex gap-3">
+                    <button class=""><img class="" src="images/demo/apple-store.png"></button>
+                    <button class=""><img class="" src="images/demo/apple-store.png"></button>
+                </div>
+            </div>
+            <div class="col-span-full md:col-span-6 order-2 sm:order-1">
+                <img class="w-3/5 mx-auto" src="images/demo/mobile-app.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>		<!-- Section-of-homeLatestNews-->
+
+<section id="homeLatestNews" class="">
+    <div class="mx-auto px-2 sm:px-3 py-8 space-y-10">
+        <h1 class="text-white text-3xl font-bold">Latest News</h1>
+        <div class="grid grid-cols-12 items-center justify-between gap-x-3">
+            <div class="col-span-full sm:col-span-6 md:col-span-4 relative flex flex-col bg-clip-border rounded-xl">
+                <div class="mb-0 rounded-md overflow-hidden">
+                    <img class="block rounded-xl" src="images/demo/latest1.jpg" alt="image">
+                </div>
+                <div class="flex flex-auto py-4">
+                    <div class="space-y-1 ">
+                        <p class="text-red-500 text-sm">EVENTS</p>
+                        <h4 class="text-gray-400 text-md font-bold">Top 10 Classic Car Events</h4>
+                    </div>
+                </div>
+                <div class="flex flex-auto gap-x-3 items-center mt-auto py-4">
+                    <div class="text-center py-2">
+                        <img class="h-12 w-12 rounded-full" src="images/demo/latest08.jpg" alt="">
+                    </div>
+                    <div class="text-gray-500 font-semibold space-y-1">
+                        <p class="text-white">Jacob Jones</p>
+                        <div class="flex items-center text-sm space-x-4">
+                            <div><i class="fas fa-calendar mr-1"></i>May 8</div>
+                            <div><i class="fas fa-sms mr-1"></i>No commentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-full sm:col-span-6 md:col-span-4 relative flex flex-col bg-clip-border rounded-xl">
+                <div class="mb-0 rounded-md overflow-hidden">
+                    <img class="block rounded-xl" src="images/demo/latest2.jpg" alt="image">
+                </div>
+                <div class="flex flex-auto py-4">
+                    <div class="space-y-1 ">
+                        <p class="text-red-500 text-sm">EVENTS</p>
+                        <h4 class="text-gray-400 text-md font-bold">Top 10 Classic Car Events</h4>
+                    </div>
+                </div>
+                <div class="flex flex-auto gap-x-3 items-center mt-auto py-4">
+                    <div class="text-center py-2">
+                        <img class="h-12 w-12 rounded-full" src="images/demo/latest-avater-2.jpg" alt="">
+                    </div>
+                    <div class="text-gray-500 font-semibold space-y-1">
+                        <p class="text-white">Jacob Jones</p>
+                        <div class="flex items-center text-sm space-x-4">
+                            <div><i class="fas fa-calendar mr-1"></i>May 8</div>
+                            <div><i class="fas fa-sms mr-1"></i>No commentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-full md:col-span-4 relative sm:hidden md:flex flex-col bg-clip-border rounded-xl">
+                <div class="mb-0 rounded-md overflow-hidden">
+                    <img class="block rounded-xl" src="images/demo/latest3.jpg" alt="image">
+                </div>
+                <div class="flex flex-auto py-4">
+                    <div class="space-y-1 ">
+                        <p class="text-red-500 text-sm">EVENTS</p>
+                        <h4 class="text-gray-400 text-md font-bold">Top 10 Classic Car Events</h4>
+                    </div>
+                </div>
+                <div class="flex flex-auto gap-x-3 items-center mt-auto py-4">
+                    <div class="text-center py-2">
+                        <img class="h-12 w-12 rounded-full" src="images/demo/latest-avater-1.jpg" alt="">
+                    </div>
+                    <div class="text-gray-500 font-semibold space-y-1">
+                        <p class="text-white">Jacob Jones</p>
+                        <div class="flex items-center text-sm space-x-4">
+                            <div><i class="fas fa-calendar mr-1"></i>May 8</div>
+                            <div><i class="fas fa-sms mr-1"></i>No commentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>	
+</main>
+
+	
+
+<footer>
+<!-- Section-of-  -->
+
+<section id="homeServices" class="bg-gray-800">
+    <div class="mx-auto px-2 sm:px-3 border-b border-gray-700">
+        <div class="flex items-center justify-between py-4">
+            <div>
+                <img class="" src="images/demo/logo-light.svg">
+            </div>
+            <div class="flex items-center space-x-6">
+                <button class="flex items-center text-white font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+                    </svg>Eng
+                </button>
+                <button class="flex items-center text-white font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>Dhaka
+                </button>
+            </div>
+        </div>
+    </div>
+</section>		
+<!-- Section-of-footer main-2 -->
+
+<section id="" class="bg-gray-800 py-12">
+    <div class="mx-auto px-2 sm:px-3">
+        <div class="flex flex-col lg:flex-row justify-between gap-12">
+            <div class="w-full lg:w-3/12 font-semibold space-y-4">
+                <h4 class="text-xl text-white">Subscribe to our newsletter</h4>
+                <p class="text-gray-400">Don't miss any relevant offers!</p>
+                <div class="flex items-center text-white  bg-gray-700 rounded-lg p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <input type="text" id="" class="w-full bg-transparent focus:outline-none" placeholder="Your email">
+                    <button class="bg-yellow-700 p-2 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="w-full lg:w-8/12">
+                <div class="grid grid-cols-12 justify-around gap-y-8 md:gap-x-8">
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 space-y-4">
+                        <h4 class="text-lg font-semibold text-white">Buying & Sellign</h4>
+                        <div class="flex flex-col space-y-1">
+                            <a class="text-gray-400 font-semibold" href="#">Find a car</a>
+                            <a class="text-gray-400 font-semibold" href="#">Sell your car</a>
+                            <a class="text-gray-400 font-semibold" href="#">Car dealers</a>
+                            <a class="text-gray-400 font-semibold" href="#">Compare cars</a>
+                            <a class="text-gray-400 font-semibold" href="#">Onloine car appraisal</a>
+                        </div>
+                    </div>
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 space-y-4">
+                        <h4 class="text-lg font-semibold text-white">About</h4>
+                        <div class="flex flex-col space-y-1">
+                            <a class="text-gray-400 font-semibold" href="#">About Finder</a>
+                            <a class="text-gray-400 font-semibold" href="#">Contact us</a>
+                            <a class="text-gray-400 font-semibold" href="#">FAQs & support</a>
+                            <a class="text-gray-400 font-semibold" href="#">Mobile app</a>
+                            <a class="text-gray-400 font-semibold" href="#">Blog</a>
+                        </div>
+                    </div>
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 space-y-4">
+                        <h4 class="text-lg font-semibold text-white">Profile</h4>
+                        <div class="flex flex-col space-y-1">
+                            <a class="text-gray-400 font-semibold" href="#">My account</a>
+                            <a class="text-gray-400 font-semibold" href="#">Wishlist</a>
+                            <a class="text-gray-400 font-semibold" href="#">My listings</a>
+                            <a class="text-gray-400 font-semibold" href="#">Add listing</a>
+                        </div>
+                    </div>
+                    <div class="col-span-full sm:col-span-6 md:col-span-3 space-y-2">
+                        <button type="button" class="flex items-center text-lg font-semibold text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                            8801909055573
+                        </button>
+                        <button type="button" class="flex flex-wrap items-center text-lg font-semibold text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            exameple@email.com
+                        </button>
+                        <div class="flex items-center  space-x-2 pt-6">
+                            <a href="#" class="flex items-center justify-center text-white font-semibold rounded-full bg-blue-600 h-8 w-8 p-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a  href="#"class="flex items-center justify-center text-blue-500 font-semibold rounded-full bg-white h-8 w-8 p-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="flex items-center justify-center text-white font-semibold rounded-full bg-blue-500 h-8 w-8 p-2" href="#"><i class="fas fa-paper-plane"></i></a>
+                            <a href="#" class="flex items-center justify-center text-white font-semibold rounded-full bg-blue-600 h-8 w-8 p-2" href="#"><i class="fab fa-facebook-messenger"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>		
+<!-- Section-of-footer copyright-3 -->
+
+<section id="" class="bg-gray-800 py-8">
+    <div class="mx-auto px-2 sm:px-3 ">
+        <div class="flex flex-col lg:flex-row gap-5 items-center justify-between px-6 sm:px-0">
+            <p class="text-gray-400 font-semibold order-2 lg:order-1  text-center md:text-left">&copy; All rights reserved. Made by <a class="text-gray-300 font-bold" href="https://exploretechsolutions.com/">Explore Tech Solutions</a></p>
+            <div class="flex gap-x-6 text-center order-1 lg:order-2">
+                <a class="text-gray-400 font-semibold" href="#">Terms of use</a>
+                <a class="text-gray-400 font-semibold" href="#">Privacy policy</a>
+                <a class="text-gray-400 font-semibold" href="#">Accessibility statement</a>
+                <a class="text-gray-400 font-semibold" href="#">Interest based ads</a>
+            </div>
+        </div>
+    </div>
+</section>	
+</footer>
+
+	<script src="js/alpine.min.js"></script>
+	<script src="js/swiper-bundle.min.js"></script>
+</body>
+
+</html>
+	<script>
+		/* homeLatest-car */
+		 var swiper = new Swiper(".homeLatest", {
+			slidesPerView: 3,
+			spaceBetween: 20,
+			slidesPerGroup: 3,
+			loop: true,
+			loopFillGroupWithBlank: true,
+			// mousewheel: true,
+			//keyboard: {
+			//enabled: true,
+			//},
+			pagination: {
+				el: ".swiper-pagination",
+				//dynamicBullets: true,
+				clickable: true,
+				/* renderBullet: function ( className) {
+					return '<span class="' + className + '">' + (index ) + "</span>";
+				}, */
+			},
+			breakpoints: {
+				340: {
+					slidesPerView: 1,
+					spaceBetween: 10,
+				},
+				640: {
+					slidesPerView: 2,
+					spaceBetween: 10,
+				},
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 15,
+				},
+				1024: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+			},
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+		});
+		
+    </script>
+	
+	<script>
+		/* homeCarosel.php */
+		 var swiper = new Swiper(".homeCarousel", {
+			slidesPerView: 1,
+			spaceBetween: 20,
+			slidesPerGroup: 1,
+			autoplay: true,
+			loop: true,
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+		});		
+    </script>
