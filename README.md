@@ -1,7 +1,5 @@
 ### carFinder-netlify  ⇢ [carFonder.netlify.app](https://rahman-carfinder.netlify.app) visite
 
-<br>
-
 # Car Finder Automation Theme Made By AR Rahman
 
 <br>
