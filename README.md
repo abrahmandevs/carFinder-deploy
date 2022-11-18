@@ -1,4 +1,4 @@
-### carFinder-netlify  ⇢ [carFonder.netlify.app](https://rahman-carfinder.netlify.app) visite
+### CarFinder Theme  ⇢ [carfinder](https://arrahman73.github.io/applauz-deploy/) visite
 
 # Car Finder Automation Theme Made By AR Rahman
 
@@ -34,7 +34,7 @@
 
 ## Work History : 🔗
 
-### &#9729;  [carFinder.netlify.app](https://rahman-carfinder.netlify.app) visite
+### &#9729;  [https://arrahman73.github.io/applauz-deploy/](https://arrahman73.github.io/applauz-deploy/) visite
 
 
 <br>
