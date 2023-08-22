@@ -34,21 +34,15 @@
 
 ## Work History : 🔗
 
-### &#9729;  [https://arrahman73.github.io/carFinder-deploy/](https://arrahman73.github.io/carFinder-deploy/) visite
+### &#9729;  [https://arrahman-dev.github.io/carFinder-deploy/](https://arrahman-dev.github.io/carFinder-deploy/) visite
 
 
 <br>
 
 ## Contact us By :
+##### [Facebook](https://web.facebook.com/arrahman.devs/) 
+##### [Whatsapp](https://call.whatsapp.com/voice/xsqucsdtNU3VNnv0TDe2xV) 
+##### Gmail: arrdevs.info@gmail.com
 
-### ⇢ [Facebook](https://web.facebook.com/arrahman47/)
-### ⇢ [Twitter](https://twitter.com/AR_Rahman47)
-### ⇢ [Linkedin](https://www.linkedin.com/in/arrahman73/)
-### ⇢ Gmail : arr47009@gmail.com
-
-
-
-<!-- all social links 
-[gmail]:(arr47009@gmail.com)
-[facebook] : (https://web.facebook.com/arrahman47/)
-[twitter]: https://twitter.com/AR_Rahman47-->
+## Social links 
+[Facebook](https://web.facebook.com/arrahman.devs/)
